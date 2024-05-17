@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+    <title>Upload Forensic Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
+            color: #fff;
+            background: linear-gradient(135deg, #000000, #333333);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background: #333;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+            z-index: 2;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter CSV File Path</h1>
+        <form action="{{ url_for('upload_file_post') }}" method="post">
+            <label for="file_path">File Path:</label>
+            <input type="text" id="file_path" name="file_path">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    html: '{{ messages[0][1] }}',
+                    confirmButtonText: 'Ok'
+                });
+            </script>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>

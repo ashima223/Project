@@ -1,0 +1,11 @@
+id,name,feature1,feature2,feature3,status
+1,File1,10,0.5,20,normal
+2,File2,20,1.0,30,attack
+3,File3,15,0.8,25,normal
+4,File4,25,1.2,35,attack
+5,File5,18,0.7,22,normal
+6,File6,22,1.1,33,attack
+7,File7,12,0.6,21,normal
+8,File8,24,1.3,36,attack
+9,File9,16,0.9,27,normal
+10,File10,26,1.4,38,attack
